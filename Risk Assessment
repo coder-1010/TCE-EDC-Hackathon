@@ -6,6 +6,7 @@ File.shape
 File["Occupation"].fillna("No",inplace=True)
 File["Illness"].fillna("No",inplace=True)
 File.isnull().sum()
+
 read_file = pd.read_excel (r'/content/TrainFeatures.xlsx')
 read_file.to_csv (r'/content/TrainFeature.csv', index = None, header=True)
 FFile=pd.read_csv('/content/TrainFeature.csv')
@@ -14,22 +15,28 @@ read_file = pd.read_excel (r'/content/COVID_ML_PROJECT.xlsx')
 read_file.to_csv (r'/content/RA.csv', index = None, header=True)
 RA=pd.read_csv('/content/RA.csv')
 RA.isnull().sum()
+
 FFile["Diabetes"]=FFile["Diabetes"].replace("Yes",1)
 FFile["Diabetes"]=FFile["Diabetes"].replace("No",2)
 FFile["Diabetes"]
+
 FFile["BP"]=FFile["BP"].replace("Yes, High Blood Pressure",1)
 FFile["BP"]=FFile["BP"].replace("Yes, Low Blood Pressure",2)
 FFile["BP"]=FFile["BP"].replace("No",3)
 FFile["BP"]
+
 FFile["SeriousIllness"]=FFile["SeriousIllness"].replace("Yes",1)
 FFile["SeriousIllness"]=FFile["SeriousIllness"].replace("No",2)
 FFile["SeriousIllness"]
+
 FFile["Acquintance"]=FFile["Acquintance"].replace("Yes",1)
 FFile["Acquintance"]=FFile["Acquintance"].replace("No",2)
 FFile["Acquintance"]
+
 FFile["Condition"]=FFile["Condition"].replace("Affected",1)
 FFile["Condition"]=FFile["Condition"].replace("Not Affected",2)
 FFile["Condition"]
+
 FFile["Loaction"]=FFile["Loaction"].replace("Ariyalur",1)
 FFile["Loaction"]=FFile["Loaction"].replace("Chengalpattu",2)
 FFile["Loaction"]=FFile["Loaction"].replace("Chennai",3)
