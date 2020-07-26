@@ -1,0 +1,106 @@
+import pandas as pd
+read_file = pd.read_excel (r'/content/CovidTrain.xlsx')
+read_file.to_csv (r'/content/EDC Hackathon Data File.csv', index = None, header=True)
+File=pd.read_csv('/content/EDC Hackathon Data File.csv')
+File.shape
+File["Occupation"].fillna("No",inplace=True)
+File["Illness"].fillna("No",inplace=True)
+File.isnull().sum()
+read_file = pd.read_excel (r'/content/TrainFeatures.xlsx')
+read_file.to_csv (r'/content/TrainFeature.csv', index = None, header=True)
+FFile=pd.read_csv('/content/TrainFeature.csv')
+FFile.isnull().sum()
+read_file = pd.read_excel (r'/content/COVID_ML_PROJECT.xlsx')
+read_file.to_csv (r'/content/RA.csv', index = None, header=True)
+RA=pd.read_csv('/content/RA.csv')
+RA.isnull().sum()
+FFile["Diabetes"]=FFile["Diabetes"].replace("Yes",1)
+FFile["Diabetes"]=FFile["Diabetes"].replace("No",2)
+FFile["Diabetes"]
+FFile["BP"]=FFile["BP"].replace("Yes, High Blood Pressure",1)
+FFile["BP"]=FFile["BP"].replace("Yes, Low Blood Pressure",2)
+FFile["BP"]=FFile["BP"].replace("No",3)
+FFile["BP"]
+FFile["SeriousIllness"]=FFile["SeriousIllness"].replace("Yes",1)
+FFile["SeriousIllness"]=FFile["SeriousIllness"].replace("No",2)
+FFile["SeriousIllness"]
+FFile["Acquintance"]=FFile["Acquintance"].replace("Yes",1)
+FFile["Acquintance"]=FFile["Acquintance"].replace("No",2)
+FFile["Acquintance"]
+FFile["Condition"]=FFile["Condition"].replace("Affected",1)
+FFile["Condition"]=FFile["Condition"].replace("Not Affected",2)
+FFile["Condition"]
+FFile["Loaction"]=FFile["Loaction"].replace("Ariyalur",1)
+FFile["Loaction"]=FFile["Loaction"].replace("Chengalpattu",2)
+FFile["Loaction"]=FFile["Loaction"].replace("Chennai",3)
+FFile["Loaction"]=FFile["Loaction"].replace("Coimbatore",4)
+FFile["Loaction"]=FFile["Loaction"].replace("Cuddalore",5)
+FFile["Loaction"]=FFile["Loaction"].replace("Dharmapuri",6)
+FFile["Loaction"]=FFile["Loaction"].replace("Dindigul",7)
+FFile["Loaction"]=FFile["Loaction"].replace("Erode",8)
+FFile["Loaction"]=FFile["Loaction"].replace("Kallakurichi",9)
+FFile["Loaction"]=FFile["Loaction"].replace("Kanchipuram",10)
+FFile["Loaction"]=FFile["Loaction"].replace("Kanyakumari",11)
+FFile["Loaction"]=FFile["Loaction"].replace("Karur",12)
+FFile["Loaction"]=FFile["Loaction"].replace("Krishnagiri",13)
+FFile["Loaction"]=FFile["Loaction"].replace("Madurai",14)
+FFile["Loaction"]=FFile["Loaction"].replace("Mayiladuthurai",15)
+FFile["Loaction"]=FFile["Loaction"].replace("Nagapattinam",16)
+FFile["Loaction"]=FFile["Loaction"].replace("Namakkal",17)
+FFile["Loaction"]=FFile["Loaction"].replace("Nilgiris",18)
+FFile["Loaction"]=FFile["Loaction"].replace("Perambalur",19)
+FFile["Loaction"]=FFile["Loaction"].replace("Pudukkottai",20)
+FFile["Loaction"]=FFile["Loaction"].replace("Ramanathapuram",21)
+FFile["Loaction"]=FFile["Loaction"].replace("Ranipet",22)
+FFile["Loaction"]=FFile["Loaction"].replace("Salem",23)
+FFile["Loaction"]=FFile["Loaction"].replace("Sivagangai",24)
+FFile["Loaction"]=FFile["Loaction"].replace("Tenkasi",25)
+FFile["Loaction"]=FFile["Loaction"].replace("Thanjavur",26)
+FFile["Loaction"]=FFile["Loaction"].replace("Theni",27)
+FFile["Loaction"]=FFile["Loaction"].replace("Thoothukudi",28)
+FFile["Loaction"]=FFile["Loaction"].replace("Tiruchirappalli",29)
+FFile["Loaction"]=FFile["Loaction"].replace("Tirunelveli",30)
+FFile["Loaction"]=FFile["Loaction"].replace("Tirupattur",31)
+FFile["Loaction"]=FFile["Loaction"].replace("Tiruppur",32)
+FFile["Loaction"]=FFile["Loaction"].replace("Tiruvallur",33)
+FFile["Loaction"]=FFile["Loaction"].replace("Tiruvannamalai",34)
+FFile["Loaction"]=FFile["Loaction"].replace("Tiruvarur",35)
+FFile["Loaction"]=FFile["Loaction"].replace("Vellore",36)
+FFile["Loaction"]=FFile["Loaction"].replace("Viluppuram",37)
+FFile["Loaction"]=FFile["Loaction"].replace("Virudhunagar",38)
+FFile["Loaction"]=FFile["Loaction"].replace("Niligiris",18)
+FFile["Loaction"]=FFile["Loaction"].replace("Avaniyapuram",14)
+FFile["Loaction"]=FFile["Loaction"].replace("Trichy",29)
+FFile["Loaction"]=FFile["Loaction"].replace("Teni",27)
+FFile["Loaction"]=FFile["Loaction"].replace("Tenaksi",25)
+FFile["Loaction"]=FFile["Loaction"].replace("Tuticorin",39)
+FFile["Loaction"]=FFile["Loaction"].replace("Rmanathapuram",21)
+FFile["Loaction"]=FFile["Loaction"].replace("Kannur",40)
+FFile["Loaction"]=FFile["Loaction"].replace("Vrudhunagar",38)
+FFile["Loaction"]=FFile["Loaction"].replace("Secunderabad",41)
+FFile["Loaction"]=FFile["Loaction"].replace("Chittoor",42)
+
+FFile["Loaction"]
+FFile.head()
+# store the feature matrix (X) and response vector (y) 
+X = FFile[FFile.columns[0:9]]
+y = FFile[FFile.columns[-1]]
+
+# splitting X and y into training and testing sets 
+from sklearn.model_selection import train_test_split 
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=1) 
+
+# training the model on training set 
+from sklearn.naive_bayes import GaussianNB 
+gnb = GaussianNB() 
+gnb.fit(X_train, y_train) 
+
+# making predictions on the testing set 
+y_pred = gnb.predict(X_test) 
+
+# comparing actual response values (y_test) with predicted response values (y_pred) 
+from sklearn import metrics 
+print("Gaussian Naive Bayes model accuracy(in %):", metrics.accuracy_score(y_test, y_pred)*100)
+Xdata=RA[RA.columns[0:9]]
+Y_pred=gnb.predict(Xdata)
+print("The Risk is:",Y_pred)
